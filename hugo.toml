@@ -1,0 +1,18 @@
+# [module.hugoVersion]
+# min = "0.111.3"
+
+[[module.imports]]
+path = "github.com/hbstack/hb"
+
+[params.hb.google_fonts]
+display = "swap"
+# [[params.hb.google_fonts.families]]
+# name = "Montserrat"
+# [params.hb.google_fonts.families.axis]
+# ital = ["0", "1"]
+# wght = ["400", "500"]
+# [[params.hb.google_fonts.families]]
+# name = "Agbalumo"
+
+# [params.hugopress.modules.hb-google-fonts.hooks.body-end]
+# cacheable = true
