@@ -1,31 +1,8 @@
 {{/* See https://developers.google.com/fonts/docs/css2#forming_api_urls. */}}
-$hb-google-fonts-url: '';
 {{- with site.Params.hb.google_fonts.families }}
   {{- $fonts := slice }}
-  {{- $query := slice }}
   {{- range . }}
     {{- $fonts = $fonts | append .name }}
-    {{- $family := .name }}
-    {{- with .axis }}
-      {{- $axis := . }}
-      {{- $axisOpts := slice }}
-      {{- $axisTuples := newScratch }}
-      {{- range slice "ital" "wdth" "wght" }}
-        {{- $axisName := . }}
-        {{- with index $axis $axisName }}
-          {{- $axisOpts = $axisOpts | append $axisName }}
-          {{- range $i, $tuple := . }}
-            {{- $axisTuples.Add (printf "%d" $i) (slice $tuple) }}
-          {{- end }}
-        {{- end }}
-      {{- end }}
-      {{ $tuples := slice }}
-      {{- range $axisTuples.Values }}
-        {{- $tuples = $tuples | append (delimit . ",") }}
-      {{- end }}
-      {{- $family = printf "%s:%s@%s" $family (delimit $axisOpts ",") (delimit $tuples ";") }}
-    {{- end }}
-    {{- $query = $query | append "family" $family }}
   {{- end }}
 $font-family-sans-serif:
   {{ delimit $fonts "," }},
@@ -42,7 +19,4 @@ $font-family-sans-serif:
   "Segoe UI Emoji",
   "Segoe UI Symbol",
   "Noto Color Emoji";
-  {{- $query = $query | append "display" (default "swap" site.Params.hb.google_fonts.display) }}
-$hb-google-fonts-url: '{{ querify $query | printf "https://fonts.googleapis.com/css2?%s" }}';
-@import url($hb-google-fonts-url);
 {{- end }}

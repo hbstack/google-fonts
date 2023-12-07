@@ -14,5 +14,5 @@ display = "swap"
 # [[params.hb.google_fonts.families]]
 # name = "Agbalumo"
 
-# [params.hugopress.modules.hb-google-fonts.hooks.body-end]
-# cacheable = true
+[params.hugopress.modules.hb-google-fonts.hooks.head-begin]
+cacheable = true
